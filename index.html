@@ -891,11 +891,13 @@ body.ar .footer-col a:hover { padding-left: 0; padding-right: 4px; }
   .about-card.span2 { grid-column: span 2; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
+  /* Navigation improvements for tablets */
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .mobile-nav { display: flex; }
+  .nav-right .nav-cta { display: none; } /* Hide CTA to prevent overlap, available in hamburger */
+}
+@media (max-width: 768px) {
   .services-grid { grid-template-columns: 1fr; }
   .industries-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -907,11 +909,29 @@ body.ar .footer-col a:hover { padding-left: 0; padding-right: 4px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
   .form-row { grid-template-columns: 1fr; }
+  /* Spacing improvements for mobile */
+  .section { padding: 60px 5%; }
+  #about-strip { padding: 60px 5%; }
+  #cta-section { padding: 60px 5%; }
+  #jobs { padding: 60px 5% !important; }
+  .hero-container { padding: 110px 5% 60px; }
+}
+@media (max-width: 640px) {
+  /* Full width buttons for easy tapping */
+  .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .hero-btns .btn-primary, .hero-btns .btn-outline { width: 100%; justify-content: center; }
+  .cta-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .cta-btns .btn-gold, .cta-btns .btn-white { width: 100%; justify-content: center; }
+  /* Adjust stats spacing */
+  .hero-stats { gap: 20px; }
+  .hero-stat .num { font-size: 24px; }
 }
 @media (max-width: 480px) {
   .industries-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .about-visual { grid-template-columns: 1fr; }
+  .about-card.span2 { grid-column: span 1; }
 }
 /* ===================== SERVICE IMAGE CARDS ===================== */
 .services-img-grid {
@@ -1007,8 +1027,11 @@ body.ar .svc-img-badge { left: auto; right: 16px; }
   .gallery-item.gallery-tall { grid-row: span 1; min-height: 0; aspect-ratio: 4/3; }
   .gallery-item.gallery-wide { grid-column: span 1; aspect-ratio: 4/3; }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .services-img-grid { grid-template-columns: 1fr; }
+  .svc-img-wrap { height: 200px; }
+}
+@media (max-width: 640px) {
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .svc-img-wrap { height: 180px; }
 }
@@ -1051,7 +1074,7 @@ body.ar .ticker-track { animation-direction: reverse; }
 <!-- Navbar -->
 <nav id="navbar">
   <div class="nav-logo">
-    <img src="images/BlueStar Manpower (2).png" alt="Blue Star Manpower Company Ltd" style="height: 150px; width: auto;">
+    <img src="images/BlueStar Manpower (2).png" alt="Blue Star Manpower Company Ltd">
   </div>
     <!-- <img src="images/BlueStar Manpower.png" alt=""> -->
     <!-- <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
