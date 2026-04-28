@@ -104,7 +104,7 @@ ul { list-style: none; }
   letter-spacing: 2px; text-transform: uppercase;
 }
 .nav-links {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items:center; gap: 6px;
 }
 .nav-links a {
   color: rgba(255,255,255,0.85);
@@ -148,6 +148,20 @@ ul { list-style: none; }
 .hamburger span {
   width: 26px; height: 2px; background: var(--white); border-radius: 2px;
   transition: var(--transition);
+}
+
+/* ===================== NAVBAR LOGO IMAGE ===================== */
+.nav-logo img {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition);
+  /* Slightly boost visibility on transparent navbar */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+#navbar.scrolled .nav-logo img {
+  height: 48px; /* shrinks with navbar on scroll */
 }
 
 /* ===================== MOBILE NAV ===================== */
@@ -928,7 +942,10 @@ body.ar .ticker-track { animation-direction: reverse; }
 <!-- Navbar -->
 <nav id="navbar">
   <div class="nav-logo">
-    <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+    <img src="images/BlueStar Manpower (2).png" alt="Blue Star Manpower Company Ltd" style="height: 150px; width: auto;">
+  </div>
+    <!-- <img src="images/BlueStar Manpower.png" alt=""> -->
+    <!-- <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
   <rect width="44" height="44" rx="10" fill="#0A2A6E"/>
   <polygon points="22,5 26,16 38,16 28.5,23 32,34 22,27 12,34 15.5,23 6,16 18,16" fill="#F5A623"/>
   <polygon points="22,9 25.2,18.2 35,18.2 27.4,23.8 30.2,33 22,27.5 13.8,33 16.6,23.8 9,18.2 18.8,18.2" fill="white" opacity="0.15"/>
@@ -936,14 +953,14 @@ body.ar .ticker-track { animation-direction: reverse; }
     <div class="logo-text">
       <span data-en="Blue Star Manpower Co. Ltd" data-ar="بلو ستار لتوظيف القوى العاملة">Blue Star Manpower Co. Ltd</span>
       <span data-en="C.R: 7052683245" data-ar="س.ت: 7052683245">C.R: 7052683245</span>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
   <div class="nav-links">
     <a href="#hero" class="active" data-en="Home" data-ar="الرئيسية">Home</a>
     <a href="#about-strip" data-en="About Us" data-ar="من نحن">About Us</a>
     <a href="#services" data-en="Services" data-ar="خدماتنا">Services</a>
     <a href="#industries" data-en="Industries" data-ar="القطاعات">Industries</a>
-    <a href="#process" data-en="How It Works" data-ar="كيف نعمل">How It Works</a>
+    <!-- <a href="#process" data-en="How It Works" data-ar="كيف نعمل">How It Works</a> -->
     <a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a>
   </div>
   <div class="nav-right">
@@ -962,13 +979,13 @@ body.ar .ticker-track { animation-direction: reverse; }
   <div class="hero-particles" id="particles"></div>
   <div class="hero-container container">
     <div class="hero-content">
-      <div class="hero-badge" data-en="★ Trusted Manpower Agency" data-ar="★ وكالة القوى العاملة الموثوقة">★ Trusted Manpower Agency</div>
+      <!-- <div class="hero-badge" data-en="★ Trusted Manpower Agency" data-ar="★ وكالة القوى العاملة الموثوقة">★ Trusted Manpower Agency</div> -->
       <h1 class="hero-title">
         <span data-en="Building Your" data-ar="نبني">Building Your</span><br>
         <span class="highlight" data-en="Dream Team" data-ar="فريقك المثالي">Dream Team</span><br>
         <span class="blue-text" data-en="Across the Gulf" data-ar="في منطقة الخليج">Across the Gulf</span>
       </h1>
-      <p class="hero-subtitle" data-en="We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more." data-ar="نوفر وندرب ونوظف كوادر بشرية مؤهلة في المملكة العربية السعودية والإمارات والكويت — ضيافة، رعاية صحية، إنشاءات وأكثر.">We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more.</p>
+      <p class="hero-subtitle" data-en="We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait - Hospitality, Healthcare, Construction, and more." data-ar="نوفر وندرب ونوظف كوادر بشرية مؤهلة في المملكة العربية السعودية والإمارات والكويت — ضيافة، رعاية صحية، إنشاءات وأكثر.">We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary" data-en="🚀 Get Free Consultation" data-ar="🚀 احصل على استشارة مجانية">🚀 Get Free Consultation</a>
         <a href="#services" class="btn-outline" data-en="Our Services →" data-ar="← خدماتنا">Our Services →</a>
@@ -1019,8 +1036,8 @@ body.ar .ticker-track { animation-direction: reverse; }
       <div class="floating-badge badge2">
         <div class="fb-icon">⚡</div>
         <div class="fb-text">
-          <span class="fb-num">72h</span>
-          <span class="fb-lbl" data-en="Fast Deployment" data-ar="توظيف سريع">Fast Deployment</span>
+          <span class="fb-num">Proven Record</span>
+          <span class="fb-lbl" data-en="Fast Deployment" data-ar="توظيف سريع"></span>
         </div>
       </div>
     </div>
