@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -32,15 +32,12 @@
 
 /* ===================== RESET ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-en);
   color: var(--text-body);
   background: var(--white);
   overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  position: relative;
 }
 body.ar { font-family: var(--font-ar); direction: rtl; }
 img { max-width: 100%; display: block; }
@@ -98,7 +95,7 @@ ul { list-style: none; }
   display: block;
   font-size: 17px; font-weight: 800;
   color: var(--white);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.5px; -->
 }
 .logo-text span:last-child {
   display: block;
@@ -107,7 +104,7 @@ ul { list-style: none; }
   letter-spacing: 2px; text-transform: uppercase;
 }
 .nav-links {
-  display: flex; align-items:center; gap: 6px;
+  display: flex; align-items: center; gap: 6px;
 }
 .nav-links a {
   color: rgba(255,255,255,0.85);
@@ -153,34 +150,16 @@ ul { list-style: none; }
   transition: var(--transition);
 }
 
-/* ===================== NAVBAR LOGO IMAGE ===================== */
-.nav-logo img {
-  height: 58px;
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition);
-  /* Slightly boost visibility on transparent navbar */
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-}
-
-#navbar.scrolled .nav-logo img {
-  height: 48px; /* shrinks with navbar on scroll */
-}
-
 /* ===================== MOBILE NAV ===================== */
-
 .mobile-nav {
   display: none; position: fixed;
-  top: 0; right: 0; width: 280px; height: 100vh;
+  top: 0; right: -100%; width: 280px; height: 100vh;
   background: var(--blue-deep);
   z-index: 999; padding: 100px 30px 30px;
   flex-direction: column; gap: 8px;
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
   box-shadow: -10px 0 40px rgba(0,0,0,0.4);
 }
-.mobile-nav.open { transform: translateX(0); }
-
 .mobile-nav.open { right: 0; }
 .mobile-nav a {
   color: rgba(255,255,255,0.85);
@@ -190,8 +169,8 @@ ul { list-style: none; }
   transition: var(--transition);
 }
 .mobile-nav a:hover { color: var(--gold); border-left-color: var(--gold); background: rgba(255,255,255,0.05); }
-body.ar .mobile-nav { left: 0; right: auto; transform: translateX(-100%); }
-body.ar .mobile-nav.open { transform: translateX(0); }
+body.ar .mobile-nav { left: -100%; right: auto; }
+body.ar .mobile-nav.open { left: 0; right: auto; }
 body.ar .mobile-nav a { border-left: none; border-right: 3px solid transparent; }
 body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 .overlay {
@@ -241,8 +220,6 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
   padding: 120px 5% 80px;
   display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -305,8 +282,6 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 .hero-stats {
   display: flex; gap: 32px; margin-top: 50px;
   animation: fadeSlideUp 0.8s ease 1.1s both;
-  flex-wrap: wrap;
-  max-width: 100%;
 }
 .hero-stat { text-align: center; }
 .hero-stat .num {
@@ -459,8 +434,8 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 }
 .about-grid {
   max-width: 1280px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-  align-items: start; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center; position: relative; z-index: 1;
 }
 .about-label {
   color: var(--gold); font-size: 12px; font-weight: 700;
@@ -561,7 +536,7 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 .sc-arrow { transition: var(--transition); }
 
 /* ===================== INDUSTRIES ===================== */
-#industries { background: var(--blue-deep); overflow: hidden; }
+#industries { background: var(--blue-deep); }
 #industries .section-title { color: var(--white); }
 #industries .section-desc { color: rgba(255,255,255,0.5); }
 #industries .section-tag { color: var(--gold); }
@@ -653,7 +628,6 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
   background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-mid) 100%);
   padding: 80px 5%;
   position: relative; overflow: hidden;
-  width: 100%;
 }
 #stats::before {
   content: '';
@@ -713,7 +687,7 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 #cta-section::before {
   content: '';
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: min(600px, 100vw); height: min(600px, 100vw); border-radius: 50%;
+  width: 600px; height: 600px; border-radius: 50%;
   background: radial-gradient(circle, rgba(27,79,216,0.25), transparent 70%);
   pointer-events: none;
 }
@@ -744,21 +718,11 @@ body.ar .mobile-nav a:hover { border-right-color: var(--gold); }
 .whatsapp-float {
   position: fixed; bottom: 30px; right: 30px; z-index: 999;
   width: 58px; height: 58px; border-radius: 50%;
-  background: #21d663;
+  background: #25D366;
   display: flex; align-items: center; justify-content: center;
   font-size: 26px; box-shadow: 0 6px 25px rgba(37,211,102,0.5);
   animation: waPulse 2.5s ease-in-out infinite;
   transition: var(--transition);
-}
-.btn-gold[href*="wa.me"] {
-  background: #25D366;
-  color: #ffffff;
-  border-color: #25D366;
-}
-
-.btn-gold[href*="wa.me"]:hover {
-  background: #1da851;
-  border-color: #1da851;
 }
 .whatsapp-float:hover { transform: scale(1.1); }
 body.ar .whatsapp-float { right: auto; left: 30px; }
@@ -786,14 +750,11 @@ body.ar .whatsapp-float { right: auto; left: 30px; }
   font-size: 20px; flex-shrink: 0;
 }
 .cc-title { font-size: 13px; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.cc-text { font-size: 15px; font-weight: 700; color: var(--text-dark); word-break: break-all; overflow-wrap: anywhere; }
+.cc-text { font-size: 15px; font-weight: 700; color: var(--text-dark); }
 .contact-form {
   background: var(--white); border-radius: var(--radius);
   padding: 40px; border: 1px solid var(--gray-light);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  width: 100%;
-  box-sizing: border-box;
 }
 .form-title { font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 28px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -890,10 +851,7 @@ body.ar .footer-col a:hover { padding-left: 0; padding-right: 4px; }
 .delay-5 { transition-delay: 0.5s; }
 
 /* ===================== RESPONSIVE ===================== */
-
-/* ── TABLET (1024px) ── */
 @media (max-width: 1024px) {
-  /* Layout */
   .hero-container { grid-template-columns: 1fr; text-align: center; }
   .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-btns { justify-content: center; }
@@ -905,29 +863,15 @@ body.ar .footer-col a:hover { padding-left: 0; padding-right: 4px; }
   .process-steps::before { display: none; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-
-
-.about-grid { grid-template-columns: 1fr; gap: 40px; }
-.leadership-grid { flex-direction: row; gap: 16px; }
-.leader-card { flex-direction: column; }
-.leader-img { width: 100%; min-width: unset; height: 200px; min-height: unset; }
-.leader-img-placeholder { width: 100%; min-width: unset; min-height: 200px; }
-.leader-body { text-align: center; padding: 16px 14px 20px; }
-.leader-divider { margin: 10px auto 0; }
+  .about-visual { grid-template-columns: repeat(4, 1fr); }
+  .about-card.span2 { grid-column: span 2; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  /* Navbar: show hamburger, hide desktop links */
+}
+@media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .mobile-nav { display: flex; }
-  .nav-right .nav-cta { display: none; }
-  /* Shrink lang button slightly on tablet */
-  .lang-btn { padding: 6px 12px; font-size: 11px; }
-  #navbar { padding: 0 4%; }
-}
-
-/* ── MOBILE LARGE (768px) ── */
-@media (max-width: 768px) {
   .services-grid { grid-template-columns: 1fr; }
   .industries-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -935,184 +879,15 @@ body.ar .footer-col a:hover { padding-left: 0; padding-right: 4px; }
   .stat-item:nth-child(2), .stat-item:nth-child(4) { border-bottom: none; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
+  .about-visual { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
   .form-row { grid-template-columns: 1fr; }
-  /* Leadership grid: 1 row of 3 on large mobile */
-
-.leadership-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.leader-img { height: 180px; }
-.leader-body { padding: 14px 10px 18px; }
-.leader-name { font-size: 14px; }
-.leader-badge { font-size: 9px; padding: 3px 8px; letter-spacing: 1px; }
-  .leader-img { height: 200px; }
-  /* Spacing */
-  .section { padding: 60px 5%; }
-  #about-strip { padding: 60px 5%; }
-  #cta-section { padding: 60px 5%; }
-  #jobs { padding: 60px 5% !important; }
-  .hero-container { padding: 110px 5% 60px; }
-  /* WhatsApp float — smaller on mobile */
-  .whatsapp-float { width: 52px; height: 52px; bottom: 22px; right: 22px; }
-  body.ar .whatsapp-float { left: 22px; right: auto; }
-  .whatsapp-float svg { width: 26px; height: 26px; }
 }
-
-/* ── MOBILE MEDIUM (640px) ── */
-@media (max-width: 640px) {
-  /* Full-width CTA buttons */
-  .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
-  .hero-btns .btn-primary, .hero-btns .btn-outline { width: 100%; justify-content: center; }
-  .cta-btns { flex-direction: column; width: 100%; gap: 12px; }
-  .cta-btns .btn-gold, .cta-btns .btn-white { width: 100%; justify-content: center; }
-  .hero-stats { gap: 20px; }
-  .hero-stat .num { font-size: 24px; }
-  /* Leadership: stack 1 per row on small phones */
-
-.leadership-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.leader-img { height: 160px; }
-.leader-body { padding: 12px 8px 14px; }
-.leader-name { font-size: 13px; }
-.leader-role { font-size: 11px; }
-}
-
-/* ── MOBILE SMALL (480px) ── */
 @media (max-width: 480px) {
   .industries-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
-  /* Navbar: hide lang button to free space for logo + hamburger */
-  .lang-btn { display: none; }
-  #navbar { padding: 0 16px; height: 68px; }
-  #navbar.scrolled { height: 60px; }
-  .nav-logo img { height: 46px; }
-  #navbar.scrolled .nav-logo img { height: 40px; }
-  .hamburger { padding: 8px; gap: 6px; }
-  .hamburger span { width: 24px; }
-  /* WhatsApp float */
-  .whatsapp-float { width: 48px; height: 48px; bottom: 18px; right: 18px; }
-  body.ar .whatsapp-float { left: 18px; right: auto; }
-  .whatsapp-float svg { width: 24px; height: 24px; }
-  /* Leadership */
- 
-.leadership-grid { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
-.leader-img { height: 220px; }
-.leader-body { padding: 18px 20px 22px; }
-.leader-name { font-size: 16px; }
-.leader-badge { font-size: 10px; }
-  /* Global overflow containment on small screens */
-  section, footer, nav, div { max-width: 100%; }
-  .hero-stats { gap: 16px; }
-  .hero-stat .num { font-size: 22px; }
-  .hero-divider { height: 32px; }
-  .hero-container { padding: 100px 16px 60px; }
-  .container { padding: 0; }
-}
-
-/* ── MOBILE XS (360px) ── */
-@media (max-width: 360px) {
-  .nav-logo img { height: 38px; }
-  .hamburger span { width: 22px; }
-  .whatsapp-float { width: 44px; height: 44px; bottom: 14px; right: 14px; }
-  .whatsapp-float svg { width: 22px; height: 22px; }
-}
-/* ===================== LEADERSHIP TEAM ===================== */
-
-.leadership-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-}
-.leader-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: var(--transition);
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-}
-.leader-card:hover {
-  background: rgba(27,79,216,0.18);
-  border-color: rgba(27,79,216,0.45);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
-.leader-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--blue-light));
-  transform: scaleX(0);
-  transition: var(--transition);
-  transform-origin: left;
-  z-index: 2;
-}
-.leader-card:hover::before { transform: scaleX(1); }
-.leader-img {
-  width: 130px;
-  min-width: 130px;
-  height: 100%;
-  min-height: 160px;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  filter: grayscale(10%);
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), filter 0.4s ease;
-}
-.leader-img-placeholder {
-  width: 130px;
-  min-width: 130px;
-  min-height: 160px;
-  background: linear-gradient(135deg, rgba(27,79,216,0.4), rgba(10,22,40,0.8));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 56px;
-}
-.leader-card:hover .leader-img {
-  transform: scale(1.04);
-  filter: grayscale(0%);
-}
-.leader-img-placeholder {
-  width: 100%;
-  height: 260px;
-  background: linear-gradient(135deg, rgba(27,79,216,0.4), rgba(10,22,40,0.8));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 72px;
-}
-.leader-body {
-  padding: 20px 22px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-}
-.leader-badge {
-  display: inline-block;
-  background: rgba(245,166,35,0.15);
-  border: 1px solid rgba(245,166,35,0.3);
-  color: var(--gold);
-  font-size: 10px; font-weight: 800;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 20px;
-  margin-bottom: 10px;
-}
-.leader-name {
-  font-size: 17px; font-weight: 800;
-  color: var(--white); margin-bottom: 4px;
-}
-.leader-role {
-  font-size: 12px; font-weight: 600;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 0.5px;
-}
-.leader-divider {
-  width: 36px; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--blue-light));
-  margin: 12px 0 0;
-  border-radius: 2px;
 }
 
 /* ===================== SERVICE IMAGE CARDS ===================== */
@@ -1202,6 +977,54 @@ body.ar .svc-img-badge { left: auto; right: 16px; }
   width: fit-content;
 }
 .svc-img-link:hover { gap: 10px; color: var(--gold); }
+
+/* ===================== GALLERY SECTION ===================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 14px;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  aspect-ratio: 4/3;
+}
+.gallery-item.gallery-tall {
+  grid-row: span 2;
+  aspect-ratio: auto;
+  min-height: 350px;
+}
+.gallery-item.gallery-wide {
+  grid-column: span 2;
+  aspect-ratio: 16/7;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,22,40,0.8) 0%, transparent 60%);
+  opacity: 0; transition: var(--transition);
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-tag {
+  background: var(--gold);
+  color: var(--blue-deep);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .services-img-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1209,14 +1032,12 @@ body.ar .svc-img-badge { left: auto; right: 16px; }
   .gallery-item.gallery-tall { grid-row: span 1; min-height: 0; aspect-ratio: 4/3; }
   .gallery-item.gallery-wide { grid-column: span 1; aspect-ratio: 4/3; }
 }
-@media (max-width: 768px) {
-  .services-img-grid { grid-template-columns: 1fr; }
-  .svc-img-wrap { height: 200px; }
-}
 @media (max-width: 640px) {
+  .services-img-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .svc-img-wrap { height: 180px; }
 }
+
 /* ===================== RTL ADJUSTMENTS ===================== */
 body.ar .about-card::before { transform-origin: right; }
 body.ar .service-card::after { transform-origin: right; }
@@ -1227,19 +1048,15 @@ body.ar .hero-badge::before { content: '★'; }
 body.ar .about-feature { flex-direction: row-reverse; }
 body.ar .contact-card { flex-direction: row-reverse; }
 body.ar .ticker-track { animation-direction: reverse; }
-
-html { overflow-x: clip; }
-
 </style>
-<link rel="shortcut icon" href="images/BlueStar Manpower (2).png" type="image/x-icon">
 </head>
 <body>
 
 <!-- Preloader -->
 <div id="preloader">
   <svg class="preloader-star" viewBox="0 0 60 60" fill="none">
-    <polygon points="30,5 37,22 55,22 41,33 46,50 30,40 14,50 19,33 5,22 23,22" fill="var(--blue-primary)"" opacity="0.9"/>
-    <circle cx="30" cy="30" r="28" stroke="#F5A623" stroke-width="2" stroke-dasharray="8 4"/>
+    <polygon points="30,5 37,22 55,22 41,33 46,50 30,40 14,50 19,33 5,22 23,22" fill="#F5A623" opacity="0.9"/>
+    <circle cx="30" cy="30" r="28" stroke="#1B4FD8" stroke-width="2" stroke-dasharray="8 4"/>
   </svg>
 </div>
 
@@ -1254,31 +1071,28 @@ html { overflow-x: clip; }
   <a href="#industries" onclick="closeMenu()" data-en="Industries" data-ar="القطاعات">Industries</a>
   <a href="#contact" onclick="closeMenu()" data-en="Contact" data-ar="تواصل معنا">Contact</a>
   <a href="#contact" class="nav-cta" onclick="closeMenu()" style="margin-top:10px;text-align:center;display:block;" data-en="Get Free Quote" data-ar="احصل على عرض">Get Free Quote</a>
-  <button class="lang-btn" onclick="toggleLang();closeMenu();" style="margin-top:8px;width:100%;border-radius:10px;padding:12px;" data-en="العربية" data-ar="English">العربية</button>
 </nav>
 
 <!-- Navbar -->
 <nav id="navbar">
   <div class="nav-logo">
-    <img src="images/BlueStar Manpower (2).png" alt="Blue Star Manpower Company Ltd">
-  </div>
-    <!-- <img src="images/BlueStar Manpower.png" alt=""> -->
-    <!-- <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-  <rect width="44" height="44" rx="10" fill="#F5A623"/>
+    <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+  <rect width="44" height="44" rx="10" fill="#0A2A6E"/>
   <polygon points="22,5 26,16 38,16 28.5,23 32,34 22,27 12,34 15.5,23 6,16 18,16" fill="#F5A623"/>
   <polygon points="22,9 25.2,18.2 35,18.2 27.4,23.8 30.2,33 22,27.5 13.8,33 16.6,23.8 9,18.2 18.8,18.2" fill="white" opacity="0.15"/>
 </svg></div>
     <div class="logo-text">
       <span data-en="Blue Star Manpower Co. Ltd" data-ar="بلو ستار لتوظيف القوى العاملة">Blue Star Manpower Co. Ltd</span>
       <span data-en="C.R: 7052683245" data-ar="س.ت: 7052683245">C.R: 7052683245</span>
-    </div> -->
-  <!-- </div> -->
+    </div>
+  </div>
   <div class="nav-links">
     <a href="#hero" class="active" data-en="Home" data-ar="الرئيسية">Home</a>
     <a href="#about-strip" data-en="About Us" data-ar="من نحن">About Us</a>
     <a href="#services" data-en="Services" data-ar="خدماتنا">Services</a>
     <a href="#industries" data-en="Industries" data-ar="القطاعات">Industries</a>
-    <!-- <a href="#process" data-en="How It Works" data-ar="كيف نعمل">How It Works</a> -->
+    <a href="#gallery" data-en="Gallery" data-ar="معرض الصور">Gallery</a>
+    <a href="#process" data-en="How It Works" data-ar="كيف نعمل">How It Works</a>
     <a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a>
   </div>
   <div class="nav-right">
@@ -1297,13 +1111,13 @@ html { overflow-x: clip; }
   <div class="hero-particles" id="particles"></div>
   <div class="hero-container container">
     <div class="hero-content">
-      <!-- <div class="hero-badge" data-en="★ Trusted Manpower Agency" data-ar="★ وكالة القوى العاملة الموثوقة">★ Trusted Manpower Agency</div> -->
+      <div class="hero-badge" data-en="★ Trusted Manpower Agency" data-ar="★ وكالة القوى العاملة الموثوقة">★ Trusted Manpower Agency</div>
       <h1 class="hero-title">
         <span data-en="Building Your" data-ar="نبني">Building Your</span><br>
         <span class="highlight" data-en="Dream Team" data-ar="فريقك المثالي">Dream Team</span><br>
         <span class="blue-text" data-en="Across the Gulf" data-ar="في منطقة الخليج">Across the Gulf</span>
       </h1>
-      <p class="hero-subtitle" data-en="We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait - Hospitality, Healthcare, Construction, and more." data-ar="نوفر وندرب ونوظف كوادر بشرية مؤهلة في المملكة العربية السعودية والإمارات والكويت — ضيافة، رعاية صحية، إنشاءات وأكثر.">We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more.</p>
+      <p class="hero-subtitle" data-en="We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more." data-ar="نوفر وندرب ونوظف كوادر بشرية مؤهلة في المملكة العربية السعودية والإمارات والكويت — ضيافة، رعاية صحية، إنشاءات وأكثر.">We source, train, and deploy skilled professionals across Saudi Arabia, UAE, and Kuwait — Hospitality, Healthcare, Construction, and more.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary" data-en="🚀 Get Free Consultation" data-ar="🚀 احصل على استشارة مجانية">🚀 Get Free Consultation</a>
         <a href="#services" class="btn-outline" data-en="Our Services →" data-ar="← خدماتنا">Our Services →</a>
@@ -1354,8 +1168,8 @@ html { overflow-x: clip; }
       <div class="floating-badge badge2">
         <div class="fb-icon">⚡</div>
         <div class="fb-text">
-          <span class="fb-num">Proven Record</span>
-          <span class="fb-lbl" data-en="Fast Deployment" data-ar="توظيف سريع"></span>
+          <span class="fb-num">72h</span>
+          <span class="fb-lbl" data-en="Fast Deployment" data-ar="توظيف سريع">Fast Deployment</span>
         </div>
       </div>
     </div>
@@ -1388,6 +1202,46 @@ html { overflow-x: clip; }
     <div class="ticker-item" data-en="Trusted & Certified" data-ar="موثوق ومعتمد">Trusted & Certified</div>
   </div>
 </div>
+
+<!-- ABOUT STRIP -->
+<section id="about-strip">
+  <div class="about-grid">
+    <div class="reveal-left">
+      <div class="about-label" data-en="WHO WE ARE" data-ar="من نحن">WHO WE ARE</div>
+      <h2 class="about-heading" data-en="Your Strategic Partner for <span>Workforce Excellence</span>" data-ar="شريكك الاستراتيجي في <span>التميز الوظيفي</span>">Your Strategic Partner for <span>Workforce Excellence</span></h2>
+      <p class="about-body" data-en="Blue Star Manpower is a premier staffing agency dedicated to connecting top-tier talent with leading companies across the Gulf region. We don't just fill positions — we build teams that drive your business forward." data-ar="بلو ستار للقوى العاملة هي وكالة توظيف رائدة متخصصة في ربط الكفاءات المتميزة بالشركات الكبرى في منطقة الخليج. لا نملأ الوظائف فحسب — بل نبني الفرق التي تدفع أعمالك نحو النجاح.">Blue Star Manpower is a premier staffing agency dedicated to connecting top-tier talent with leading companies across the Gulf region. We don't just fill positions — we build teams that drive your business forward.</p>
+      <div class="about-features">
+        <div class="about-feature"><div class="af-icon">✅</div><span data-en="Fully vetted and trained workforce" data-ar="قوى عاملة مدربة وموثوقة بالكامل">Fully vetted and trained workforce</span></div>
+        <div class="about-feature"><div class="af-icon">🌍</div><span data-en="Operations across 5 GCC countries" data-ar="عمليات في 5 دول خليجية">Operations across 5 GCC countries</span></div>
+        <div class="about-feature"><div class="af-icon">⚡</div><span data-en="Fast 72-hour deployment guarantee" data-ar="ضمان نشر سريع خلال 72 ساعة">Fast 72-hour deployment guarantee</span></div>
+        <div class="about-feature"><div class="af-icon">🏆</div><span data-en="ISO-compliant recruitment process" data-ar="عملية توظيف متوافقة مع ISO">ISO-compliant recruitment process</span></div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display:inline-flex;" data-en="Learn More About Us →" data-ar="← تعرف علينا أكثر">Learn More About Us →</a>
+    </div>
+    <div class="about-visual reveal-right">
+      <div class="about-card">
+        <div class="ac-icon">👥</div>
+        <span class="ac-num" data-count="500">0<span>+</span></span>
+        <span class="ac-lbl" data-en="Active Workers" data-ar="عمال نشطون">Active Workers</span>
+      </div>
+      <div class="about-card">
+        <div class="ac-icon">🏢</div>
+        <span class="ac-num" data-count="80">0<span>+</span></span>
+        <span class="ac-lbl" data-en="Partner Companies" data-ar="شركات شريكة">Partner Companies</span>
+      </div>
+      <div class="about-card">
+        <div class="ac-icon">🌟</div>
+        <span class="ac-num" data-count="98">0<span>%</span></span>
+        <span class="ac-lbl" data-en="Client Satisfaction" data-ar="رضا العملاء">Client Satisfaction</span>
+      </div>
+      <div class="about-card">
+        <div class="ac-icon">📍</div>
+        <span class="ac-num" data-count="5">0<span>+</span></span>
+        <span class="ac-lbl" data-en="GCC Countries" data-ar="دول الخليج">GCC Countries</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services" class="section section-alt">
@@ -1481,74 +1335,57 @@ html { overflow-x: clip; }
   </div>
 </section>
 
-<!-- ABOUT STRIP -->
-<section id="about-strip">
-  <div class="about-grid">
-    <div class="reveal-left">
-      <div class="about-label" data-en="WHO WE ARE" data-ar="من نحن">WHO WE ARE</div>
-      <h2 class="about-heading" data-en="Your Strategic Partner for <span>Workforce Excellence</span>" data-ar="شريكك الاستراتيجي في <span>التميز الوظيفي</span>">Your Strategic Partner for <span>Workforce Excellence</span></h2>
-      <p class="about-body" data-en="Blue Star Manpower is a premier staffing agency dedicated to connecting top-tier talent with leading companies across the Gulf region. We don't just fill positions — we build teams that drive your business forward." data-ar="بلو ستار للقوى العاملة هي وكالة توظيف رائدة متخصصة في ربط الكفاءات المتميزة بالشركات الكبرى في منطقة الخليج. لا نملأ الوظائف فحسب — بل نبني الفرق التي تدفع أعمالك نحو النجاح.">Blue Star Manpower is a premier staffing agency dedicated to connecting top-tier talent with leading companies across the Gulf region. We don't just fill positions — we build teams that drive your business forward.</p>
-      <div class="about-features">
-        <div class="about-feature"><div class="af-icon">✅</div><span data-en="Fully vetted and trained workforce" data-ar="قوى عاملة مدربة وموثوقة بالكامل">Fully vetted and trained workforce</span></div>
-        <div class="about-feature"><div class="af-icon">🌍</div><span data-en="Operations across 5 GCC countries" data-ar="عمليات في 5 دول خليجية">Operations across 5 GCC countries</span></div>
-        <div class="about-feature"><div class="af-icon">⚡</div><span data-en="Fast 72-hour deployment guarantee" data-ar="ضمان نشر سريع خلال 72 ساعة">Fast 72-hour deployment guarantee</span></div>
-        <div class="about-feature"><div class="af-icon">🏆</div><span data-en="ISO-compliant recruitment process" data-ar="عملية توظيف متوافقة مع ISO">ISO-compliant recruitment process</span></div>
-      </div>
-      <a href="#contact" class="btn-primary" style="display:inline-flex;" data-en="Learn More About Us →" data-ar="← تعرف علينا أكثر">Learn More About Us →</a>
+<!-- GALLERY -->
+<section id="gallery" class="section" style="background:var(--blue-deep);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag" style="color:var(--gold);" data-en="OUR TEAMS IN ACTION" data-ar="فرقنا في العمل">OUR TEAMS IN ACTION</div>
+      <h2 class="section-title" style="color:var(--white);" data-en="Real Workers, <span style='color:var(--gold)'>Real Results</span>" data-ar="عمال حقيقيون، <span style='color:var(--gold)'>نتائج حقيقية</span>">Real Workers, <span style="color:var(--gold)">Real Results</span></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.5);" data-en="Photos of our deployed teams across Saudi Arabia's top hotels, restaurants, and facilities." data-ar="صور لفرقنا المنتشرة في أفضل فنادق ومطاعم ومرافق المملكة العربية السعودية.">Photos of our deployed teams across Saudi Arabia's top hotels, restaurants, and facilities.</p>
     </div>
-    <div class="leadership-grid reveal-right">
 
-      <!-- CEO -->
-      <div class="leader-card">
-        <img
-          class="leader-img"
-          src="images/khair.jpeg"
-          alt="Mohammed Abul Khair – CEO"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        >
-        <div class="leader-img-placeholder" style="display:none;">👤</div>
-        <div class="leader-body">
-          <div class="leader-badge" data-en="Chief Executive" data-ar="الرئيس التنفيذي">Chief Executive</div>
-          <div class="leader-name" data-en="Mohammed Abul Khair" data-ar="محمد أبو الخير">Mohammed Abul Khair</div>
-          <div class="leader-role" data-en="CEO" data-ar="الرئيس التنفيذي">CEO</div>
-          <div class="leader-divider"></div>
+    <!-- Masonry Grid -->
+    <div class="gallery-grid reveal">
+      <div class="gallery-item gallery-tall">
+        <img src="images/11.jpg" alt="Blue Star Hotel Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Hotel Staffing" data-ar="توظيف الفنادق">Hotel Staffing</span>
         </div>
       </div>
-
-      <!-- Director -->
-      <div class="leader-card">
-        <img
-          class="leader-img"
-          src="images/anower.jpg"
-          alt="Anower Hossain – Director"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        >
-        <div class="leader-img-placeholder" style="display:none;">👤</div>
-        <div class="leader-body">
-          <div class="leader-badge" data-en="Board Director" data-ar="مدير مجلس الإدارة">Board Director</div>
-          <div class="leader-name" data-en="Anower Hossain" data-ar="أنور حسين">Anower Hossain</div>
-          <div class="leader-role" data-en="Director" data-ar="مدير">Director</div>
-          <div class="leader-divider"></div>
+      <div class="gallery-item">
+        <img src="images/22.jpg" alt="Blue Star Restaurant Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Restaurant Staff" data-ar="موظفو المطاعم">Restaurant Staff</span>
         </div>
       </div>
-
-      <!-- General Manager -->
-      <div class="leader-card">
-        <img
-          class="leader-img"
-          src="images/meshkat.jpeg"
-          alt="Meshkat Ul Ala – General Manager"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        >
-        <div class="leader-img-placeholder" style="display:none;">👤</div>
-        <div class="leader-body">
-          <div class="leader-badge" data-en="Operations Head" data-ar="رئيس العمليات">Operations Head</div>
-          <div class="leader-name" data-en="Meshkat Ul Ala" data-ar="مشكات الأعلى">Meshkat Ul Ala</div>
-          <div class="leader-role" data-en="General Manager" data-ar="المدير العام">General Manager</div>
-          <div class="leader-divider"></div>
+      <div class="gallery-item">
+        <img src="images/33.jpg" alt="Blue Star Healthcare Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Healthcare Workers" data-ar="العمالة الصحية">Healthcare Workers</span>
         </div>
       </div>
+      <div class="gallery-item gallery-wide">
+        <img src="images/44.jpg" alt="Blue Star Construction Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Construction Crew" data-ar="طاقم البناء">Construction Crew</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/55.jpg" alt="Blue Star Cleaning Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Cleaning Team" data-ar="فريق التنظيف">Cleaning Team</span>
+        </div>
+      </div>
+      <div class="gallery-item gallery-tall">
+        <img src="images/66.jpg" alt="Blue Star Landscaping Team" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay">
+          <span class="gallery-tag" data-en="Landscaping Team" data-ar="فريق البستنة">Landscaping Team</span>
+        </div>
+      </div>
+    </div>
 
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="#contact" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:30px;font-size:15px;font-weight:800;background:var(--gold);color:var(--blue-deep);box-shadow:0 6px 25px rgba(245,166,35,0.4);transition:var(--transition);" data-en="📋 Partner With Us" data-ar="📋 كن شريكنا">📋 Partner With Us</a>
     </div>
   </div>
 </section>
@@ -1714,7 +1551,7 @@ html { overflow-x: clip; }
     </div>
     <div class="clients-track-wrap reveal">
       <div class="clients-track">
-        <div class="client-logo"><span style="color:#F5A623;font-weight:800;">🏨 Hilton</span></div>
+        <div class="client-logo"><span style="color:#0A2A6E;font-weight:800;">🏨 Hilton</span></div>
         <div class="client-logo"><span style="color:#C8102E;font-weight:800;">🏨 Pullman</span></div>
         <div class="client-logo"><span style="color:#8B0000;font-weight:800;">🏨 Marriott</span></div>
         <div class="client-logo"><span style="color:#006341;font-weight:800;">🏨 Mövenpick</span></div>
@@ -1725,7 +1562,7 @@ html { overflow-x: clip; }
         <div class="client-logo"><span style="color:#8B6914;font-weight:800;">🏨 Al Shohada Hotel</span></div>
         <div class="client-logo"><span style="color:#2C5F8A;font-weight:800;">🏨 Gulliman Hotels</span></div>
         <!-- duplicate for infinite loop -->
-        <div class="client-logo"><span style="color:#F5A623;font-weight:800;">🏨 Hilton</span></div>
+        <div class="client-logo"><span style="color:#0A2A6E;font-weight:800;">🏨 Hilton</span></div>
         <div class="client-logo"><span style="color:#C8102E;font-weight:800;">🏨 Pullman</span></div>
         <div class="client-logo"><span style="color:#8B0000;font-weight:800;">🏨 Marriott</span></div>
         <div class="client-logo"><span style="color:#006341;font-weight:800;">🏨 Mövenpick</span></div>
@@ -1910,12 +1747,7 @@ html { overflow-x: clip; }
   <h2 class="cta-title reveal" data-en="Need Workers Fast? <span>We've Got You.</span>" data-ar="تحتاج عمالاً بسرعة؟ <span>نحن هنا لك.</span>">Need Workers Fast? <span>We've Got You.</span></h2>
   <p class="cta-desc reveal" data-en="WhatsApp us right now and get your free quote within the hour. Fast. Reliable. Professional." data-ar="راسلنا عبر واتساب الآن واحصل على عرضك المجاني خلال ساعة. سريع. موثوق. احترافي.">WhatsApp us right now and get your free quote within the hour. Fast. Reliable. Professional.</p>
   <div class="cta-btns reveal">
-    <a href="https://wa.me/966549810415" class="btn-gold" data-en="WhatsApp Now" data-ar="واتساب الآن">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" style="vertical-align:middle; margin-right:8px;">
-        <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.473 2.027 7.776L0 32l8.437-2.01A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.784-1.858l-.487-.29-5.01 1.195 1.234-4.874-.318-.5A13.247 13.247 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.862c-.398-.199-2.354-1.162-2.718-1.294-.364-.133-.63-.199-.895.199-.265.398-1.029 1.294-1.261 1.56-.232.265-.464.298-.862.1-.398-.2-1.681-.62-3.202-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.464.597-.696.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.1-.199-.895-2.158-1.227-2.955-.323-.775-.651-.67-.895-.683l-.763-.013c-.265 0-.696.1-1.06.497-.364.398-1.393 1.362-1.393 3.32s1.427 3.852 1.626 4.117c.199.265 2.808 4.287 6.803 6.014.951.41 1.693.655 2.271.839.954.304 1.823.261 2.51.158.765-.114 2.354-.962 2.686-1.89.332-.928.332-1.724.232-1.89-.099-.166-.364-.265-.762-.464z"/>
-      </svg>
-      WhatsApp Now
-    </a>
+    <a href="https://wa.me/966549810415" class="btn-gold" data-en="💬 WhatsApp Now" data-ar="💬 واتساب الآن">💬 WhatsApp Now</a>
     <a href="#contact" class="btn-white" data-en="📋 Get Free Quote" data-ar="📋 احصل على عرض مجاني">📋 Get Free Quote</a>
   </div>
 </section>
@@ -1926,9 +1758,9 @@ html { overflow-x: clip; }
     <div class="footer-brand">
       <div class="footer-logo">
         <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden;"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-  <rect width="44" height="44" rx="10" fill="#F5A623"/>
-  <polygon points="22,5 26,16 38,16 28.5,23 32,34 22,27 12,34 15.5,23 6,16 18,16" fill="#1A2B8C"/>
-  <polygon points="22,9 25.2,18.2 35,18.2 27.4,23.8 30.2,33 22,27.5 13.8,33 16.6,23.8 9,18.2 18.8,18.2" fill="deep-blue" opacity="0.15"/>
+  <rect width="44" height="44" rx="10" fill="#0A2A6E"/>
+  <polygon points="22,5 26,16 38,16 28.5,23 32,34 22,27 12,34 15.5,23 6,16 18,16" fill="#F5A623"/>
+  <polygon points="22,9 25.2,18.2 35,18.2 27.4,23.8 30.2,33 22,27.5 13.8,33 16.6,23.8 9,18.2 18.8,18.2" fill="white" opacity="0.15"/>
 </svg></div>
         <div class="logo-text">
           <span data-en="Blue Star Manpower Co. Ltd" data-ar="بلو ستار لتوظيف القوى العاملة">Blue Star Manpower Co. Ltd</span>
@@ -1981,13 +1813,8 @@ html { overflow-x: clip; }
 </footer>
 
 <!-- WhatsApp Float -->
-<!-- <a href="https://wa.me/966549810415" class="whatsapp-float" title="Chat on WhatsApp">💬</a> -->
-<!-- WhatsApp Float -->
-<a href="https://wa.me/966549810415" class="whatsapp-float" title="Chat on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="white">
-    <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.473 2.027 7.776L0 32l8.437-2.01A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.784-1.858l-.487-.29-5.01 1.195 1.234-4.874-.318-.5A13.247 13.247 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.862c-.398-.199-2.354-1.162-2.718-1.294-.364-.133-.63-.199-.895.199-.265.398-1.029 1.294-1.261 1.56-.232.265-.464.298-.862.1-.398-.2-1.681-.62-3.202-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.464.597-.696.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.1-.199-.895-2.158-1.227-2.955-.323-.775-.651-.67-.895-.683l-.763-.013c-.265 0-.696.1-1.06.497-.364.398-1.393 1.362-1.393 3.32s1.427 3.852 1.626 4.117c.199.265 2.808 4.287 6.803 6.014.951.41 1.693.655 2.271.839.954.304 1.823.261 2.51.158.765-.114 2.354-.962 2.686-1.89.332-.928.332-1.724.232-1.89-.099-.166-.364-.265-.762-.464z"/>
-  </svg>
-</a>
+<a href="https://wa.me/966549810415" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+
 <script>
 // ===================== LANGUAGE SYSTEM =====================
 let currentLang = 'en';
@@ -2111,17 +1938,17 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ===================== FORM SUBMIT =====================
-function submitForm() {
-  const btn = document.querySelector('.btn-submit');
-  const isAr = currentLang === 'ar';
-  btn.textContent = isAr ? '✅ تم الإرسال! سنتواصل معك قريباً.' : '✅ Sent! We\'ll contact you soon.';
-  btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
-  setTimeout(() => {
-    btn.textContent = isAr ? '🚀 إرسال الرسالة' : '🚀 Send Message';
-    btn.style.background = '';
-  }, 4000);
-}
-</script>
-</body>
+// // ===================== FORM SUBMIT =====================
+// function submitForm() {
+//   const btn = document.querySelector('.btn-submit');
+//   const isAr = currentLang === 'ar';
+//   btn.textContent = isAr ? '✅ تم الإرسال! سنتواصل معك قريباً.' : '✅ Sent! We\'ll contact you soon.';
+//   btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+//   setTimeout(() => {
+//     btn.textContent = isAr ? '🚀 إرسال الرسالة' : '🚀 Send Message';
+//     btn.style.background = '';
+//   }, 4000);
+// }
+// </script>
+// </body>
 </html>
